@@ -45,7 +45,7 @@ renderizarTarefas()
 
 // FUNÇÃO PARA REMOVER AS MENSAGENS DE ERRO (SE HOUVER)
 function removerSpans() {
-    let spans = document.querySelectorAll("span")
+    let spans = document.querySelectorAll(".alert")
 
     spans.forEach(span => {
         divCard.removeChild(span)
