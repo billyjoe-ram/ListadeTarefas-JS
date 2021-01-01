@@ -2,10 +2,10 @@
 ## This page can create simple and responsive to-do lists using Vanilla JS, in wich you can create and delete new itens that are saved in your browser's local storage
 
 **Initial page**<br>
-![](./screenshots/no-item.png)
+![](./screenshots/no-items.PNG)
  
  **List with items**<br>
-![](./screenshots/with-items.png)
+![](./screenshots/with-items.PNG)
 
 **Tools used**
 - Vanilla JS
