@@ -11,7 +11,7 @@ const lstTrfa = document.querySelector("#lista")
 const divCard = document.querySelector(".card")
 
 // ARRAY VAZIO PARA TAREFAS
-let tarefas = []
+let tarefas = JSON.parse(localStorage.getItem("tarefas")) || []
 
 // FUNÇÃO PARA RENDERIZAR AS TAREFAS NO ARRAY PARA A LISTA
 function renderizarTarefas(){
@@ -39,6 +39,9 @@ function renderizarTarefas(){
         lstTrfa.appendChild(itemLst)
     })
 }
+
+// RENDERIZANDO TAREFAS AO INICIAR A PÁGINA PARA CARREGAR OS DADOS
+renderizarTarefas()
 
 // FUNÇÃO PARA REMOVER AS MENSAGENS DE ERRO (SE HOUVER)
 function removerSpans() {
@@ -69,6 +72,9 @@ function criarTarefas() {
 
         divCard.appendChild(aviso)
     }
+
+    // SALVAR DADOS
+    saveStorage()
 }
 
 // REMOVER TAREFAS DO ARRAY
@@ -77,19 +83,22 @@ function deletarTarefa(tarefa) {
     tarefas.splice(tarefas.indexOf(tarefa.textContent), 1)
 
     // RENDERIZAR TELA NOVAMENTE
-    renderizarTarefas()    
+    renderizarTarefas()
+
+    // SALVAR DADOS
+    saveStorage()  
 }
 
 // ADICIONAR EVENTO DE CLICK NO BOTÃO
-btnCad.onclick = () => {
-    // LIMPAR TEXTO DO INPUT
-    inpTrfa.value = ""
+btnCad.onclick = () => {    
     // REMOVENDO MENSAGENS DE ERRO PARA CAMPO VAZIO
     removerSpans()
     // CRIANDO AS TAREFAS NO ARRAY
     criarTarefas()
     // EXIBINDO VALORES DO ARRAY NA <ul>
     renderizarTarefas()
+    // LIMPAR TEXTO DO INPUT
+    inpTrfa.value = ""
 }
 
 // ADICIONAR EVENTO ACIONADO POR 'Enter' NO INPUT
@@ -98,4 +107,9 @@ inpTrfa.onkeyup = event => {
     if (event.keyCode === 13) {        
         btnCad.click()
     }
+}
+
+// SALVANDO DADOS NO STORAGE
+function saveStorage() {
+    localStorage.setItem("tarefas", JSON.stringify(tarefas))
 }

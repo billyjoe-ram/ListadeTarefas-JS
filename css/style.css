@@ -1,0 +1,10 @@
+.card-header {
+    background-color: #1f7733;
+    color: white;
+}
+
+#del-inst {
+    color: darkred;
+    text-align: center;
+    display: block;
+}
